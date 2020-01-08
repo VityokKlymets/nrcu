@@ -5,7 +5,8 @@
   "author": "vityokklymets <vityokklymets@gmail.com>",
   "scripts": {
     "dev": "webpack-dev-server --colors --progress",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "netlify": "npm install && npm run build"
   },
   "license": "MIT",
   "devDependencies": {
