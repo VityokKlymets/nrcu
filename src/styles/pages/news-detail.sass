@@ -1,0 +1,99 @@
+.news-detail-content
+    display: grid
+    @include for-phone
+        padding-bottom: 20px
+    @include for-tablet
+        grid-template-columns: 1fr
+    @include for-desktop
+        grid-template-columns: 3fr 1fr
+        grid-column-gap: 30px
+        padding-bottom: 40px
+    @include for-large-desktop
+        padding-bottom: 70px
+
+.news-detail-title
+    @include for-phone
+        font-size: 20px
+    @include for-tablet
+        font-size: 22px
+    @include for-desktop
+        font-size: 26px
+    @include for-large-desktop
+        font-size: 30px
+.news-detail-image-container
+    margin-right: 30px
+    img
+        max-width: 670px
+        @include for-tablet-only
+            width: 100%
+            max-width: none
+.news-detail-date
+    font-weight: bold
+    color: #7e7e7e
+    margin-bottom: 10px
+p.news-detail-description
+    font-size: 16px
+    line-height: 18px
+    margin: 0
+    color: #656668
+.photo-sign
+    display: inline-block
+    margin-top: 20px
+    font-size: 14px
+    color: #7e7e7e
+.last-news-item
+    @include for-tablet-only
+        flex-direction: column
+        display: flex
+        img
+            align-self: center
+.last-news-text
+    color: #656668
+    padding-top: 20px 
+    padding-bottom: 30px
+    @include for-phone
+        font-size: 16px
+    @include for-desktop
+        font-size: 18px
+.last-news-image
+    max-width: 320px
+.listen-item
+    display: flex
+    @include for-phone
+        padding-top: 20px
+    @include for-desktop
+        padding-top: 40px
+    @include for-large-desktop
+        padding-top: 70px
+        padding-bottom: 10px
+.listen-item-image
+    width: 130px
+    height: 130px
+.listen-btn-container
+    display: flex
+    flex-direction: column
+    margin: 0 30px
+.listen-btn
+    width: 70px
+    height: 70px
+    background: url(assets/play-btn.png) no-repeat
+    background-size: contain
+    cursor: pointer
+.list-btn-text
+    text-align: center
+    color: #c3c3c3
+    font-size: 14px
+.listen-text
+    font-weight: bold
+    line-height: 1.3em
+    @include for-phone
+        font-size: 18px
+    @include for-desktop
+        font-size: 20px
+    @include for-large-desktop
+        font-size: 22px
+.listen-text-author
+    color: #b28ecc
+    font-weight: normal
+
+    

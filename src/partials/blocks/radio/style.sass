@@ -1,0 +1,204 @@
+.radio
+    background: url('https://img4.goodfon.com/wallpaper/nbig/a/3f/concert-party-music-crowd.jpg') no-repeat
+    background-size: cover
+    background-position: center
+    position: relative
+    .container
+        height: 100%
+    @include for-phone
+        height: 400px
+    @include for-tablet
+        height: 450px
+    @include for-desktop
+        height: 500px
+    @include for-large-desktop
+        height: 670px
+    &.culture-radio
+        &::after
+            background-color: rgba(106,36,155,0.5)
+    &.ray-radio
+        background: linear-gradient(#ff9c44,#755237)
+        &::after
+            display: none
+    &::after
+        content: ''
+        position: absolute
+        left: 0
+        top: 0
+        bottom: 0
+        right: 0
+        background-color: rgba(0,0,0,.5)
+.radio-content
+    position: relative
+    z-index: 1
+    color: $white
+    display: grid
+    grid-template-columns: 350px 200px 450px
+    align-items: center
+    justify-content: center
+    padding: 70px 0
+    @include for-tablet-only
+        height: 100%
+        padding: 40px 0
+        grid-template-columns: 1fr
+        grid-template-rows: 1fr 1fr
+.radio-image
+    border-radius: 50%
+    border: 1px solid $white
+    @include for-phone
+        display: none
+    @include for-desktop
+        display: block
+        width: 250px
+        height: 250px
+    @include for-large-desktop
+        width: 300px
+        height: 300px
+
+.radio-title,.radio-time
+    font-weight: bold
+    text-align: center
+    @include for-phone
+        font-size: 20px
+    @include for-tablet
+        font-size: 24px
+    @include for-desktop
+        font-size: 34px
+    @include for-large-desktop
+        font-size: 36px
+.radio-time
+    font-weight: normal
+    margin-top: 20px
+    @include for-phone
+        font-size: 18px
+    @include for-tablet
+        font-size: 20px
+    @include for-desktop
+        font-size: 24px
+    @include for-large-desktop
+        font-size: 28px
+.radio-btn
+    padding: 40px
+    background: rgba(0, 0, 0, .3)
+    border-radius: 50%
+    align-self: center
+    justify-self: center
+    cursor: pointer
+    @include for-tablet-only
+        order: 1
+.radio-btn-icon
+    background-size: contain
+    background-repeat: no-repeat
+    @include for-phone
+        width: 30px
+        height: 30px
+    @include for-tablet
+        width: 40px
+        height: 40px
+    @include for-desktop
+        width: 70px
+        height: 70px
+    @include for-large-desktop
+        width: 80px
+        height: 80px
+    &.pause
+        background-image: url(assets/pause-button.svg)
+    &.play
+        background-image: url(assets/play-button.svg)
+
+.radio-broadcast-list
+    margin-left: 10%
+    justify-self: flex-end
+    @include for-tablet-only
+        display: none
+.radio-broadcast-title
+    text-transform: uppercase
+    font-size: 22px
+    padding-bottom: 30px
+.radio-broadcast-item
+    font-size: 1.1em
+    margin-bottom: 10px
+    position: relative
+    &.current
+        font-weight: bold
+        &::after
+            content: ''
+            width: 10px
+            height: 10px
+            position: absolute
+            left: -1.4em
+            border-radius: 50%
+            background: #be1500
+            top: 50%
+            transform: translateY(-50%)
+.radio-broadcast-time
+    display: inline-block
+    padding-right: 1.5em
+.radio-status
+    position: relative
+    @include for-phone
+        margin-bottom: 20px
+    @include for-desktop
+        margin-bottom: 40px
+    @include for-large-desktop
+        margin-bottom: 70px
+    &.online
+        &::after
+            content: ''
+            width: 10px
+            height: 10px
+            position: absolute
+            left: -1.4em
+            border-radius: 50%
+            background: #be1500
+            top: 50%
+            transform: translateY(-50%)
+.radio-label
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-right: 5%
+    @include for-tablet-only
+        align-self: flex-start
+        margin-right: 0
+        order: 2
+
+
+.radio-slider-item
+    text-align: center
+    padding-top: 60px
+    position: relative
+    padding-bottom: 40px
+    height: 100%
+    display: flex
+    flex-direction: column
+
+.radio-item-title
+    padding-top: 10px
+    color: #7e7e7e
+.radio-slider-item.active
+    background: #9aa2aa
+    &::after
+        content: ''
+        background: #be1500
+        width: 20px
+        height: 20px
+        position: absolute
+        border-radius: 50%
+        left: 50%
+        transform: translateX(-50%)
+        top: 20px
+    .radio-item-title
+        color: #000
+
+.radio-slider
+    #radioSlider
+        height: 200px
+    .slick-track
+        display: flex
+    .slick-prev:after
+        top: 50%
+        transform: translateY(-50%)
+    .slick-next:after
+        top: 50%
+        transform: translateY(-50%) scale(-1)

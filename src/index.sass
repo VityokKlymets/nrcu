@@ -1,0 +1,105 @@
+@import styles/mixins
+@import styles/colors
+body
+    margin: 0
+    font-family: "Open Sans", sans-serif
+a
+    text-decoration: none
+    color: inherit
+p
+    margin: 0
+    padding: 0
+    line-height: 1.2em
+    color: #656668
+    @include for-phone
+        margin-top: 20px
+    @include for-desktop
+        margin-top: 40px
+    @include for-large-desktop
+        margin-top: 60px    
+.container
+    padding: 0 20px
+    max-width: 1428px
+    margin: 0 auto
+    position: relative
+.d-flex
+    display: flex
+.flex-tablet-column
+    @include for-tablet-only
+        flex-direction: column
+.flex-column
+    flex-direction: column
+.justify-content-center
+    justify-content: center
+.justify-tablet-center
+    @include for-tablet-only
+       justify-content: center
+.justify-content-between
+    justify-content: space-between
+.justify-content-around
+    justify-content: space-around
+.justify-content-end
+    justify-content: flex-end
+.align-items-center
+    align-items: center
+.align-tablet-center
+    @include for-tablet-only
+        align-items: center
+.align-tablet-start
+    @include for-tablet-only
+        align-items: flex-start
+.align-items-start
+    align-items: flex-start
+.align-items-end
+    align-items: flex-end
+.d-tablet-only
+    display: none
+    @include for-tablet-only
+        display: block
+.search-input
+    width: 250px
+    border: 1px solid #999999
+    background: #646363
+    display: block
+    color: $white
+    padding: 15px 10px
+    &::placeholder
+        color: $white
+        outline: none
+img.rounded
+    border-radius: 50%
+.icon
+    height: 36px
+    width: 36px
+    background-repeat: no-repeat
+    background-position: top center
+.icon + .icon
+    margin-left: 15px
+.ukraine
+    width: 51px
+    background-image: url(assets/ukraine.svg)
+.apple
+    background-image: url(assets/apple.svg)
+.instagram
+    background-image: url(assets/instagram.svg)
+.facebook
+    background-image: url(assets/facebook.svg)
+.android
+    background-image: url(assets/android.svg)
+    
+.slick-slide,.slick-track,.slick-list
+    height: 100%
+.slick-slide
+    &>div
+        height: 100%
+        &>div
+            height: 100%
+@import partials/blocks/header/style
+@import partials/blocks/footer/style
+@import partials/blocks/news/style
+@import partials/blocks/slider/style
+@import partials/blocks/speakers/style
+@import partials/blocks/channel-list/style
+@import partials/blocks/our-projects/style
+@import partials/blocks/radio/style
+@import styles/pages/news-detail

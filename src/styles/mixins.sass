@@ -1,0 +1,27 @@
+@mixin for-phone-only
+    @media (max-width: 768px)
+        @content
+@mixin for-tablet-only
+    @media (max-width: 1024px)
+        @content
+@mixin for-phone
+    @media (min-width: 0px)
+        @content
+@mixin for-tablet
+    @media (min-width: 768px)
+        @content
+@mixin for-desktop
+    @media (min-width: 1024px) 
+        @content
+@mixin for-big-desktop
+    @media (min-width: 1200px)
+        @content
+@mixin for-large-desktop
+    @media (min-width: 1440px)
+        @content
+
+
+.radio-slider
+    background: #bbc6d1
+    .slider-wrapper
+        padding: 0 20%

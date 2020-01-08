@@ -1,0 +1,65 @@
+.footer
+    padding: 40px 0
+    padding-bottom: 120px
+    color: $white
+    background: #18191a
+    @include for-tablet-only
+        padding: 20px 0
+        .logo
+            order: 1
+    @include for-big-desktop
+        padding: 70px 0
+.footer-nav-item
+    display: inline-block
+    @include for-tablet-only
+.footer-nav-item + .footer-nav-item
+    padding-top: 10px
+    @include for-tablet-only
+        margin-left: 20px
+.footer-nav
+    display: flex
+    flex-direction: column
+    
+    @include for-desktop
+        font-size: 16px
+    @include for-big-desktop
+        font-size: 18px
+   
+    @include for-tablet-only
+        display: block
+        text-align: center
+        order: 4
+.footer-search
+    @include for-tablet-only
+        order: 3
+        .search-input
+            width: 100%
+.footer-social
+    padding-top: 20px
+    @include for-tablet-only
+        justify-content: center
+.footer-logo-image
+    background-image: url(assets/footer-logo.svg)
+    background-position: top center
+.footer-top-nav
+    order: 1
+    border-bottom: 1px solid #ddd
+    padding-bottom: 30px
+    width: 100%
+    margin-bottom: 30px
+    color: #ddd
+    .footer-top-nav-item
+        margin-top: 15px
+        text-transform: capitalize
+        font-size: 18px
+        display: block
+        text-align: center
+    @include for-desktop
+        display: none
+
+.footer.culture-radio
+    .footer-logo-image
+        background-image: url(assets/culture-logo-footer.png)
+.footer.ray-radio
+    .footer-logo-image
+        background-image: url(assets/ray-logo-footer.png)

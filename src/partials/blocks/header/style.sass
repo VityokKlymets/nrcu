@@ -1,0 +1,141 @@
+.header
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    @include for-phone
+        padding: 20px 0
+    @include for-desktop
+        padding: 40px 0
+    @include for-large-desktop
+        padding: 70px 0
+.top-nav-burger
+    display: none
+    position: fixed
+    right: 20px
+    top: 20px
+    cursor: pointer
+    background: $magenta
+    box-sizing: border-box
+    background-clip: content-box
+    width: 30px
+    height: 24px
+    border-top: 11px solid transparent
+    border-bottom: 11px solid transparent
+    transform: rotate(0deg)
+    transition: all 0.25s ease-in-out
+    z-index: 11
+    @include for-tablet-only
+        display: block
+    &:before,
+    &:after
+        content: ""
+        position: absolute
+        background: $magenta
+        height: 2px
+        width: 100%
+        right: 0
+        will-change: rotate
+        transform: rotate(0deg)
+        transition: all 0.5s ease
+    &:before 
+        top: -10px
+    &:after 
+        bottom: -10px
+        width: 90%
+    &.active 
+        background: transparent
+        background-clip: content-box
+    &.active:before 
+        transform: rotate(135deg)
+        top: 0
+        background: #eee
+        width: 110%
+    &.active:after 
+        bottom: 0
+        transform: rotate(-135deg)
+        background: #eee
+        width: 110%
+
+.top-nav-menu
+    display: flex
+    align-items: flex-start
+    z-index: 10
+    @include for-tablet-only
+        font-size: 18px
+        padding-top: 20px
+        padding-right: 100px
+        flex-direction: column
+        align-items: flex-end
+        position: fixed
+        background: #2a3140
+        top: 0
+        right: 0
+        width: 40%
+        height: 100%
+        opacity: 0
+        transform-origin: right top
+        transform: scale(0)
+        visibility: hidden
+        transition: all 0.4s ease-in-out
+        overflow: hidden
+        &.open
+            opacity: 0.99
+            visibility: visible
+            transform: scale(1)
+    @include for-phone-only
+        width: 100%
+        align-items: center
+        padding-right: 0
+.top-nav-item
+    text-decoration: none
+    white-space: nowrap
+    margin: 0
+    background-color: $magenta
+    color: $white
+    text-transform: lowercase
+    padding: 10px 20px
+    transition: all .3s linear
+    cursor: pointer
+    &.active
+        background-color: $grey
+        color: $dark-grey
+    &::first-letter
+        text-transform: uppercase
+    &:hover
+        opacity: .8
+    @include for-big-desktop
+        font-size: 18px
+    @include for-large-desktop
+        font-size: 22px
+        padding: 20px 30px
+    @include for-tablet-only
+        text-transform: capitalize
+        background-color: inherit
+        
+        &.active
+            background-color: inherit
+            color: $white
+    
+.logo-image
+    display: block
+    background: url(assets/logo.svg) no-repeat
+    width: 250px
+    height: 75px
+
+.header.culture-radio
+    .top-nav-item
+        background: #6a249b
+        &.active
+            background-color: $grey
+            color: $dark-grey
+    .logo-image
+        background-image: url(assets/culture-logo.png)
+
+.header.ray-radio
+    .top-nav-item
+        background: #ff9c44
+        &.active
+            background-color: $grey
+            color: $dark-grey
+    .logo-image
+        background-image: url(assets/ray-logo.png)

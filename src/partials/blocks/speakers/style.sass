@@ -1,0 +1,40 @@
+#speakersSlider
+    height: 270px
+    .slick-slide
+        margin: 0 15px
+    .slick-list
+        margin: 0 -15px
+.speakers
+    background: #cad4de
+    padding: 40px 0
+    @include for-tablet-only
+        padding: 20px 0
+    @include for-large-desktop
+        padding: 70px 0       
+.speakers-list-item
+    display: flex !important
+    flex-direction: column
+    align-items: center
+    justify-content: center
+.speaker-image
+    border-radius: 50%
+    width: 200px
+    height: 200px
+    @include for-tablet-only
+        width: 150px
+        height: 150px
+
+.speaker-name
+    
+    margin-top: 10px
+    line-height: 30px
+    text-transform: capitalize
+    max-width: 100px
+    text-align: center
+    font-size: 18px
+    @include for-desktop
+        font-size: 20px
+    @include for-large-desktop
+        font-size: 22px
+.slider-wrapper
+    padding: 0 5%
