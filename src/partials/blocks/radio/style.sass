@@ -13,9 +13,12 @@
         height: 500px
     @include for-large-desktop
         height: 670px
+    &.ukr-radio
+        &::after
+            background-color: rgba(101,23,35,0.7)
     &.culture-radio
         &::after
-            background-color: rgba(106,36,155,0.5)
+            background-color: rgba(106,36,155,0.7)
     &.ray-radio
         background: linear-gradient(#ff9c44,#755237)
         &::after
@@ -78,7 +81,7 @@
     @include for-large-desktop
         font-size: 28px
 .radio-btn
-    padding: 40px
+    padding: 30px
     background: rgba(0, 0, 0, .3)
     border-radius: 50%
     align-self: center
@@ -87,8 +90,10 @@
     @include for-tablet-only
         order: 1
 .radio-btn-icon
-    background-size: contain
+    background-size: cover
     background-repeat: no-repeat
+    background-image: url(assets/play-button.svg)
+    transform: translateX(5px)
     @include for-phone
         width: 30px
         height: 30px
@@ -103,9 +108,7 @@
         height: 80px
     &.pause
         background-image: url(assets/pause-button.svg)
-    &.play
-        background-image: url(assets/play-button.svg)
-
+        transform: none
 .radio-broadcast-list
     margin-left: 10%
     justify-self: flex-end
@@ -131,6 +134,11 @@
             background: #be1500
             top: 50%
             transform: translateY(-50%)
+.radio-broadcast-name
+    font-weight: bold
+    font-size: 1.1em
+.radio-broadcast-description
+    color: #bdbdbd
 .radio-broadcast-time
     display: inline-block
     padding-right: 1.5em
