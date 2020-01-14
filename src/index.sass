@@ -18,10 +18,15 @@ p
     @include for-large-desktop
         margin-top: 60px    
 .container
-    padding: 0 20px
     max-width: 1428px
     margin: 0 auto
     position: relative
+    @include for-phone
+        padding: 0 20px
+    @include for-desktop
+        padding: 0 100px
+    @include for-large-desktop
+        margin-top: 60px    
 .d-flex
     display: flex
 .flex-tablet-column
