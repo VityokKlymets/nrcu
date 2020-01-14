@@ -1,8 +1,4 @@
 #channelsSlider
-    .slick-slide
-        margin: 0 15px
-    .slick-list
-        margin: 0 -15px
 .channel-list
     @include for-phone
         padding-bottom: 20px
@@ -13,7 +9,7 @@
     @include for-large-desktop
         padding-bottom: 100px
 .channel-item
-    display: flex
+    display: inline-flex !important
     flex-direction: column
     align-items: center
     outline: none
@@ -27,3 +23,7 @@
         font-size: 18px
     @include for-large-desktop
         font-size: 20px
+
+.channel-image
+    width: 170px
+    height: auto
