@@ -53,7 +53,7 @@ const onWindowLoad = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1
+          slidesToShow: 2
         }
       }
     ]
@@ -61,7 +61,8 @@ const onWindowLoad = () => {
   const channelsSliderConfig = {
     ...speakersSliderConfig,
     slidesToShow: 6,
-    appendArrows: "#channelsSlider .slide-arrows"
+    appendArrows: "#channelsSlider .slide-arrows",
+    slidesToScroll: 1,
   }
 
   const radioSliderConfig = {
