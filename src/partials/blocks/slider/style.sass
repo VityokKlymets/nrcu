@@ -143,4 +143,15 @@ p.slide-text
             button
                 background: #dddedf
                 color: #dddedf
-    
+
+.slider
+    .slick-prev
+        &:after
+            left: 100px
+            @include for-phone-only
+                left: 20px
+    .slick-next
+        &:after
+            right: 100px
+            @include for-phone-only
+                right: 20px
