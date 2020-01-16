@@ -29,7 +29,7 @@
         margin-right: 0
     img
         width: 400px
-        @include for-phone-only
+        @include for-tablet-only
             width: 100%
 .news-detail-text
 .news-detail-date
@@ -77,6 +77,7 @@ p.news-detail-description
     object-fit: cover
 .listen-item
     display: flex
+    flex-wrap: wrap
     @include for-phone
         padding: 20px 0
     @include for-desktop
