@@ -1,0 +1,24 @@
+.speakers-list
+    display: flex
+    flex-wrap: wrap
+.speakers-list-item
+    flex-basis: 170px
+    margin: 0 5px
+    margin-bottom: 20px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: flex-start
+    font-size: 14px
+    @include for-phone
+        width: auto
+        img
+            width: auto
+    @include for-desktop
+        width: 100%
+        img
+            width: 100%
+            object-fit: cover
+    span
+        padding-top: 5px
+        color: #0083cf

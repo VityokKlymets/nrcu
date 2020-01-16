@@ -89,6 +89,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/pages/speaker.hbs",
       filename: "speaker.html"
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/speakers.hbs",
+      filename: "speakers.html"
     })
   ]
 }

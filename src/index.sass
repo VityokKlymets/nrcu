@@ -11,6 +11,10 @@ p
     padding: 0
     line-height: 1.3em
     color: #000
+ul
+    list-style: none
+    margin: 0
+    padding: 0
 .container
     max-width: 1428px
     margin: 0 auto
@@ -110,6 +114,51 @@ img.rounded
     &:hover
         opacity: .8
 
+.btn-pagination 
+    width: 100%
+    height: auto
+    margin: 40px 0
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: $white
+
+.btn-pagination ul 
+    width: auto
+    height: auto
+
+.btn-pagination ul li 
+    width: 30px
+    height: 30px
+    float: left
+    margin: 0 5px 0 0
+    border: 0
+
+.btn-pagination ul li:last-child 
+    margin: 0
+.btn-pagination ul li.current a
+    background: $magenta
+    color: $white 
+.btn-pagination ul li a 
+    width: 100%
+    height: 30px
+    float: left
+    text-align: center
+    line-height: 30px
+    font-family: 'Roboto', sans-serif
+    font-weight: 400
+    font-size: 1em
+    color: #2E2929
+    cursor: pointer
+    border-radius: 3px
+    transition: background-color .25s ease-in-out
+
+.btn-pagination ul li a:hover
+    background-color: $magenta
+    color: $white
+
+
+
 @import partials/blocks/header/style
 @import partials/blocks/footer/style
 @import partials/blocks/news/style
@@ -122,3 +171,4 @@ img.rounded
 @import partials/blocks/sidebar/style
 @import styles/pages/news-detail
 @import styles/pages/speaker
+@import styles/pages/speakers
