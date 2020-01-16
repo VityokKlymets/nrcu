@@ -1,7 +1,11 @@
-.speakers-list
+.flex-list
     display: flex
     flex-wrap: wrap
-.speakers-list-item
+    &.prog-list
+        .flex-list-item
+            flex-basis: 150px
+            justify-content: flex-start
+.flex-list-item
     flex-basis: 170px
     margin: 0 5px
     margin-bottom: 20px
@@ -10,6 +14,7 @@
     justify-content: space-between
     align-items: flex-start
     font-size: 14px
+   
     @include for-phone
         width: auto
         img
