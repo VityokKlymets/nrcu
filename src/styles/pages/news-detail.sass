@@ -12,6 +12,7 @@
         padding-bottom: 70px
 
 .news-detail-title
+    margin-top: 0
     @include for-phone
         font-size: 20px
     @include for-tablet
@@ -21,26 +22,28 @@
     @include for-large-desktop
         font-size: 30px
 .news-detail-image-container
+    display: flex
+    flex-direction: column
     margin-right: 30px
-    flex: 2
     @include for-tablet-only
         margin-right: 0
-        flex: 1
     img
-        width: 100%
+        width: 400px
+        @include for-phone-only
+            width: 100%
 .news-detail-text
-    flex: 1
 .news-detail-date
     font-weight: bold
     color: #7e7e7e
     margin-bottom: 10px
+    @include for-tablet-only
+        margin-top: 10px
 p.news-detail-description
     font-size: 16px
     line-height: 18px
     margin: 0
-    color: #656668
+    color: #000
 .photo-sign
-    display: inline-block
     margin-top: 20px
     font-size: 14px
     color: #7e7e7e
@@ -61,7 +64,7 @@ p.news-detail-description
     @include for-tablet-only
         padding-top: 30px
 .last-news-text
-    color: #656668
+    color: #000
     padding-top: 20px 
     padding-bottom: 30px
     @include for-phone
@@ -75,11 +78,11 @@ p.news-detail-description
 .listen-item
     display: flex
     @include for-phone
-        padding-top: 20px
+        padding: 20px 0
     @include for-desktop
-        padding-top: 40px
+        padding: 40px 0
     @include for-large-desktop
-        padding-top: 70px
+        padding: 70px 0
         padding-bottom: 10px
 .listen-item-image
     width: 130px
@@ -110,9 +113,6 @@ p.news-detail-description
 .listen-text-author
     color: #b28ecc
     font-weight: normal
-
-    
-
 .ads-block
     background: #bbc6d1
     text-align: center

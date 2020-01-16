@@ -9,6 +9,9 @@
         padding: 40px 0
     @include for-large-desktop
         padding: 70px 0
+.top-nav
+    position: relative
+    z-index: 4
 .top-nav-burger
     display: none
     position: fixed
@@ -87,16 +90,27 @@
         width: 100%
         align-items: center
         padding-right: 0
+    nav
+        display: none
+        position: absolute
+        left: 0
+        top: 100%
+        .top-nav-item
+            &:hover
+                opacity: 1
 .top-nav-item
+    position: relative
     text-decoration: none
     white-space: nowrap
     margin: 0
     background-color: $magenta
     color: $white
     text-transform: lowercase
-    padding: 10px 20px
     transition: all .3s linear
     cursor: pointer
+    a
+        display: inline-block
+        padding: 12px 20px
     &.active
         background-color: $grey
         color: $dark-grey
@@ -104,9 +118,11 @@
         text-transform: uppercase
     &:hover
         opacity: .8
+        nav
+            display: block
     @include for-big-desktop
         font-size: 14px
-        padding: 12px 20px
+        
     @include for-tablet-only
         text-transform: capitalize
         background-color: #2a3140 !important
@@ -119,6 +135,7 @@
     background: url(assets/logo.svg) no-repeat
     width: 250px
     height: 75px
+    background-size: contain
 
 .header.culture-radio
     .top-nav-item

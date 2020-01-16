@@ -10,13 +10,7 @@ p
     margin: 0
     padding: 0
     line-height: 1.3em
-    color: #656668
-    @include for-phone
-        margin-top: 20px
-    @include for-desktop
-        margin-top: 40px
-    @include for-large-desktop
-        margin-top: 60px    
+    color: #000
 .container
     max-width: 1428px
     margin: 0 auto
@@ -97,6 +91,37 @@ img.rounded
         height: 100%
         &>div
             height: 100%
+
+.grid-sidebar
+    display: grid
+    grid-template-columns: auto 300px
+    grid-template-areas: 'content sidebar'
+    .content
+        grid-area: content
+    .right-sidebar
+        grid-area: sidebar
+    @include for-tablet-only
+        grid-template-columns: 1fr
+        grid-template-areas: "content" "sidebar"
+        
+.listen-link
+    display: flex
+    align-items: center
+    justify-content: center
+    background: $magenta
+    width: 25px
+    height: 25px
+    transition: opacity .3s
+    &::after
+        content: ''
+        width: 10px 
+        height: 10px
+        background: url('assets/play-button.svg') no-repeat
+        background-size: contain
+
+    &:hover
+        opacity: .8
+
 @import partials/blocks/header/style
 @import partials/blocks/footer/style
 @import partials/blocks/news/style
@@ -105,4 +130,7 @@ img.rounded
 @import partials/blocks/channel-list/style
 @import partials/blocks/our-projects/style
 @import partials/blocks/radio/style
+@import partials/blocks/programs-list/style
+@import partials/blocks/sidebar/style
 @import styles/pages/news-detail
+@import styles/pages/speaker
