@@ -76,8 +76,6 @@ p.news-detail-description
     height: 170px
     object-fit: cover
 .listen-item
-    display: flex
-    flex-wrap: wrap
     @include for-phone
         padding: 20px 0
     @include for-desktop
@@ -85,35 +83,11 @@ p.news-detail-description
     @include for-large-desktop
         padding: 70px 0
         padding-bottom: 10px
-.listen-item-image
-    width: 130px
-    height: 130px
-.listen-btn-container
-    display: flex
-    flex-direction: column
-    margin: 0 30px
-.listen-btn
-    width: 70px
-    height: 70px
-    background: url(assets/play-btn.png) no-repeat
-    background-size: contain
-    cursor: pointer
-.list-btn-text
-    text-align: center
-    color: #c3c3c3
-    font-size: 14px
-.listen-text
-    font-weight: bold
-    line-height: 1.3em
-    @include for-phone
-        font-size: 18px
-    @include for-desktop
-        font-size: 20px
-    @include for-large-desktop
-        font-size: 22px
-.listen-text-author
-    color: #b28ecc
-    font-weight: normal
+    span,a
+        color: #0083cf
+        display: block
+        font-size: .8em
+        cursor: pointer
 .ads-block
     background: #bbc6d1
     text-align: center

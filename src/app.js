@@ -70,9 +70,7 @@ const onWindowLoad = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
     appendArrows: ".radio-slider .slide-arrows",
-    
   }
-
   $("#channelsSlider").slick(channelsSliderConfig)
   $("#speakersSlider").slick(speakersSliderConfig)
   $("#mainSlider").slick(mainSliderConfig)
