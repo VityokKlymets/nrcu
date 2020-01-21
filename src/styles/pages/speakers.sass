@@ -2,9 +2,14 @@
     display: flex
     flex-wrap: wrap
     font-family: tahoma serif
+    @include for-tablet-only
+        justify-content: center
+        &.prog-list
+            .flex-list-item
+                text-align: center
+                align-items: center
     &.prog-list
         .flex-list-item
-            flex-basis: 150px
             justify-content: flex-start
 .flex-list-item
     flex-basis: 170px
