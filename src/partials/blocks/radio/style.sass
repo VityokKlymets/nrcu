@@ -13,16 +13,26 @@
         height: 500px
     @include for-large-desktop
         height: 670px
-    &.ukr-radio
+    &.radio-6
         &::after
-            background-color: rgba(101,23,35,0.7)
-    &.culture-radio
+            background-color: rgba(0,203,216,0.7)
+    &.radio-5
+        &::after
+            background-color: rgba(0,0,0,0.4)
+    &.radio-4
+        &::after
+            background-color: rgba(207,105,77,0.7)
+    &.radio-3
         &::after
             background-color: rgba(106,36,155,0.7)
-    &.ray-radio
+    &.radio-2
         background: linear-gradient(#ff9c44,#755237)
         &::after
             display: none
+    &.radio-1
+        &::after
+            background-color: rgba(101,23,35,0.7)
+   
     &::after
         content: ''
         position: absolute
@@ -118,6 +128,9 @@
     text-transform: uppercase
     font-size: 22px
     padding-bottom: 30px
+    .radio-title
+        font-size: inherit
+        text-align: left
 .radio-broadcast-item
     font-size: 1.1em
     margin-bottom: 10px
@@ -139,6 +152,9 @@
     font-size: 1.1em
 .radio-broadcast-description
     color: #bdbdbd
+    p
+        font-size: inherit
+        color: inherit
 .radio-broadcast-time
     display: inline-block
     padding-right: 1.5em
