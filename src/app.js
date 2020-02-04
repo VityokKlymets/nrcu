@@ -1,17 +1,18 @@
 import "slick-carousel"
 import "slick-carousel/slick/slick.css"
-import './assets/fonts.css'
+import "./assets/fonts.css"
 
 window.$ = $
 
 const onWindowLoad = () => {
-  $("#navToggle").click(function() {
+  $("#navToggle").on("click", function() {
     $(this).toggleClass("active")
     $(".top-nav-menu").toggleClass("open")
     // this line ▼ prevents content scroll-behind
     $("body").toggleClass("locked")
   })
-  $(".radio-btn").click(function() {
+
+  $(".radio-btn").on("click", function() {
     const $icon = $(this).children(".radio-btn-icon")
     $icon.toggleClass("pause")
   })
@@ -62,31 +63,44 @@ const onWindowLoad = () => {
     ...speakersSliderConfig,
     slidesToShow: 6,
     appendArrows: "#channelsSlider .slide-arrows",
-    slidesToScroll: 1,
+    slidesToScroll: 1
   }
+
+  $("#channelsSlider").slick(channelsSliderConfig)
+  $("#speakersSlider").slick(speakersSliderConfig)
+  $("#mainSlider").slick(mainSliderConfig)
+
+  const radioSlider = $("#radioSlider")
 
   const radioSliderConfig = {
     ...speakersSliderConfig,
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 5,
     appendArrows: ".radio-slider .slide-arrows",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4.
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
+      }
+    ]
   }
-  $("#channelsSlider").slick(channelsSliderConfig)
-  $("#speakersSlider").slick(speakersSliderConfig)
-  $("#mainSlider").slick(mainSliderConfig)
-  const radioSlider = $("#radioSlider")
-  radioSlider.on('init',function(e,slick){
+
+  radioSlider.on("init", function(e, slick) {
     const activeIndex = $(".radio-slider-item").index($(".radio-slider-item.active"))
-    const {slideCount } = slick
-    const slidesToShow = 5;
-    const slidesToScroll = 1
-    const maxSlideMoves = Math.floor((slideCount - slidesToShow) / slidesToScroll)
-    const centeredMove = Math.floor(slidesToScroll/ (slideCount - slidesToShow) * activeIndex)
-    const moveTo =  centeredMove > maxSlideMoves ? maxSlideMoves : centeredMove 
-    slick.slickGoTo(moveTo)
-  })  
+    slick.slickGoTo(activeIndex)
+  })
+
   radioSlider.slick(radioSliderConfig)
-  
 }
 
 const copyRecentNewsChannelNameForMobileLayout = () => {

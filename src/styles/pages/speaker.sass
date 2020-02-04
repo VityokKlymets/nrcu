@@ -10,6 +10,9 @@
     @include for-tablet-only
         flex-direction: column
     .author-image
+        margin-right: 1em
+        margin-bottom: 1em
+        float: left
         align-self: flex-start
         object-fit: cover
         @include for-tablet-only
@@ -17,10 +20,9 @@
             margin-bottom: 20px
     .author-text
         padding-left: 20px
-        display: flex
-        flex-direction: column
         @include for-tablet-only
             padding-left: 0
         span
+            display: block
             padding-bottom: 1em
         
