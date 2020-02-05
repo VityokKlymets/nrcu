@@ -3,7 +3,23 @@ import "slick-carousel/slick/slick.css"
 import "./assets/fonts.css"
 
 window.$ = $
-
+let audio = null
+function onRadioClick() {
+  const $icon = $(this).children(".radio-btn-icon")
+  $icon.toggleClass("pause")
+  if ($icon.hasClass("pause")) {
+    if (!audio && window.AUDIO_URL) {
+      audio = new Audio(window.AUDIO_URL)
+    }
+    if (audio) {
+      audio.play()
+    }
+  } else {
+    if (audio) {
+      audio.pause()
+    }
+  }
+}
 const onWindowLoad = () => {
   $("#navToggle").on("click", function() {
     $(this).toggleClass("active")
@@ -12,10 +28,7 @@ const onWindowLoad = () => {
     $("body").toggleClass("locked")
   })
 
-  $(".radio-btn").on("click", function() {
-    const $icon = $(this).children(".radio-btn-icon")
-    $icon.toggleClass("pause")
-  })
+  $(".radio-btn").on("click", onRadioClick)
   const mainSliderConfig = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -82,14 +95,14 @@ const onWindowLoad = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4.
+          slidesToScroll: 4
         }
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 2
         }
       }
     ]
