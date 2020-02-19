@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import Player from "./player/Player"
 import { Provider } from "react-redux"
 import store from "./store"
