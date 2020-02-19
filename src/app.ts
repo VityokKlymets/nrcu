@@ -1,9 +1,19 @@
+import Jquery from 'jquery'
 import "slick-carousel"
 import "slick-carousel/slick/slick.css"
 import "./assets/fonts.css"
 
-window.$ = $
-let audio = null
+declare global {
+  interface Window { 
+    $: typeof Jquery,
+    AUDIO_URL:string,
+  }
+}
+
+window.$ = Jquery
+
+let audio:HTMLAudioElement = null
+
 function onRadioClick() {
   const $icon = $(this).children(".radio-btn-icon")
   $icon.toggleClass("pause")

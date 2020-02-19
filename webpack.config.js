@@ -5,7 +5,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const webpack = require("webpack")
 
 module.exports = {
-  entry: ["./src/app.js", "./src/index.sass"],
+  entry: ["./src/app.ts", "./src/index.sass"],
+  devtool: "inline-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
@@ -21,14 +22,12 @@ module.exports = {
         }
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        test: /\.(tsx?|js)$/,
+        use: "ts-loader",
+        exclude: /node_modules/
       },
       {
-        test: /\.(sass|scss)$/,
+        test: /\.sass$/,
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
@@ -38,7 +37,8 @@ module.exports = {
       {
         test: /\.svg$/,
         use: {
-          loader: "svg-url-loader"
+          loader: "svg-url-loader",
+          options: {}
         }
       },
       {
@@ -55,13 +55,12 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"]
+  },
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    }),
     new ExtractTextPlugin({
       filename: "bundle.css",
       allChunks: true

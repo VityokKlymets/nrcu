@@ -30,12 +30,16 @@
     "style-loader": "^1.0.0",
     "svg-inline-loader": "^0.8.0",
     "svg-url-loader": "^3.0.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
     "url-loader": "^2.2.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "@types/jquery": "^3.3.32",
+    "@types/slick-carousel": "^1.6.34",
     "jquery": "^3.4.1",
     "slick-carousel": "^1.8.1"
   }
