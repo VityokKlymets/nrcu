@@ -1,0 +1,161 @@
+$player-height: 50px
+$player-bg: #f3efef
+$player-primary: #f60
+
+.player-main
+    position: fixed
+    left: 0
+    bottom: 0
+    height: $player-height
+    display: flex
+    padding: 0 2rem
+    align-items: center
+    background: $player-bg
+    width: 100%
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3)
+
+    .controls
+        margin-right: 2rem
+
+        button
+            cursor: pointer
+            font-size: 20px
+            color: #444
+            transition: 0.4s linear
+
+            &:hover
+                color: $player-primary
+
+            & + button
+                margin-left: 1rem
+
+    .time, .duration
+        font-size: 0.8rem
+        color: $player-primary
+        padding: 0 0.7rem
+
+.progress-wrapper
+    cursor: pointer
+    position: relative
+    flex-basis: 400px
+    height: 100%
+    margin: 1rem 0
+    display: flex
+    align-items: center
+
+    &:hover
+        .handler
+            opacity: 1
+
+    .background
+        position: absolute
+        width: 100%
+        height: 1px
+        background: #ccc
+
+    .bar
+        position: absolute
+        background: $player-primary
+        height: 1px
+        transition: width 0.2s linear
+
+    .handler
+        width: 8px
+        height: 8px
+        background: $player-primary
+        position: absolute
+        margin-left: -4px
+        border-radius: 100%
+        opacity: 0
+        transition: all 0.2s
+
+.volume-control
+    position: relative
+    padding: 10px 0
+    cursor: pointer
+
+    &.muted
+        .volume-wrapper
+            opacity: 0.5
+
+    &:hover .volume-wrapper
+        height: 118px
+        overflow: visible
+
+    .volume-icon
+        font-size: 1.2rem
+
+    .volume-wrapper
+        display: flex
+        justify-content: center
+        height: 0px
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+        position: absolute
+        left: -5px
+        bottom: 2.5rem
+        z-index: 1
+        width: 30px
+        transition: height 100ms
+        overflow: hidden
+        background-color: #fff
+        outline: 0
+        cursor: pointer
+        border-radius: 5px
+
+        &::before, &::after
+            content: ""
+            position: absolute
+            width: 0
+            height: 0
+            transform-origin: 0 0
+            transform: rotate(-45deg)
+            pointer-events: none
+
+        &::before
+            z-index: 0
+            bottom: -10px
+            border: 5px solid #000
+            left: 8px
+            border-color: transparent transparent $player-bg $player-bg
+            box-shadow: (-3px) 3px 4px rgba(0, 0, 0, 0.1)
+
+        &::after
+            bottom: -8px
+            left: 9px
+            z-index: 1
+            border: 4px solid #000
+            border-color: transparent transparent $player-bg $player-bg
+
+    .volume-inner
+        position: absolute
+        bottom: 13px
+        left: 0
+        height: 92px
+        width: 2px
+        margin-left: 14px
+
+        .volume-background, .volume-progress
+            position: absolute
+            left: 0
+            bottom: 0
+            display: block
+            background-color: #ccc
+            width: 100%
+            height: 100%
+            border: none
+            box-shadow: none
+            border-radius: 0
+            outline: 0
+
+        .volume-progress
+            background: $player-primary
+
+        .slider-handler
+            position: absolute
+            display: block
+            width: 8px
+            height: 8px
+            border-radius: 100%
+            background-color: $player-primary
+            margin-left: -3px
+            left: 0

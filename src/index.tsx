@@ -1,7 +1,10 @@
+import React from 'react'
+import {render} from 'react-dom'
 import Jquery from 'jquery'
 import "slick-carousel"
 import "slick-carousel/slick/slick.css"
 import "./assets/fonts.css"
+import App from './components/App'
 
 declare global {
   interface Window { 
@@ -138,3 +141,6 @@ const copyRecentNewsChannelNameForMobileLayout = () => {
 copyRecentNewsChannelNameForMobileLayout()
 
 $(onWindowLoad)
+
+
+render(<App/>,document.querySelector('#react-root'))

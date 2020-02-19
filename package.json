@@ -24,6 +24,7 @@
     "node-sass": "^4.12.0",
     "node-sass-svg": "^1.1.1",
     "react-svg-loader": "^3.0.3",
+    "redux-devtools-extension": "^2.13.8",
     "replace-loader": "^0.2.0",
     "sass-loader": "^7.2.0",
     "string-replace-loader": "^2.2.0",
@@ -39,8 +40,16 @@
   },
   "dependencies": {
     "@types/jquery": "^3.3.32",
+    "@types/react": "^16.9.20",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-redux": "^7.1.7",
     "@types/slick-carousel": "^1.6.34",
     "jquery": "^3.4.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "reselect": "^4.0.0",
     "slick-carousel": "^1.8.1"
   }
 }
