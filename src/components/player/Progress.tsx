@@ -27,7 +27,7 @@ function Progress({
   };
   return (
     <Fragment>
-      <div className="time">{time}</div>
+      <div className="time">{time} / {duration}</div>
       <div ref={targetRef} onClick={clickHandler} className="progress-wrapper">
         <div className="background" />
         <div
@@ -43,7 +43,6 @@ function Progress({
           }}
         />
       </div>
-      <div className="duration">{duration}</div>
     </Fragment>
   );
 }

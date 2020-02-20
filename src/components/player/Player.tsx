@@ -69,6 +69,7 @@ function Player() {
 
   return (
     <div className="player-main">
+      <img src="https://api.suspilne.radio/promin.jpg" alt="" className="player-image"/>
       <Contols
         playing={playerState.play}
         onPauseClick={pauseHandler}

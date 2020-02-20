@@ -1,6 +1,23 @@
-$player-height: 50px
-$player-bg: #f3efef
-$player-primary: #f60
+$player-height: 100px
+$player-bg: #fff
+$player-primary: #651723
+
+.player-image
+    width: 100px
+    height: 100px
+    position: absolute
+    left: 0
+    top: 0
+.player-play-icon,.player-pause-icon
+    width: 70px
+    height: 70px
+
+.player-next-icon,.player-prev-icon
+    width: 30px
+    height: 30px
+
+.player-prev-icon
+    transform: scale(-1)
 
 .player-main
     position: fixed
@@ -8,20 +25,18 @@ $player-primary: #f60
     bottom: 0
     height: $player-height
     display: flex
-    padding: 0 2rem
     align-items: center
+    justify-content: center
     background: $player-bg
     width: 100%
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3)
     z-index: 10
-    
-    .controls
-        margin-right: 2rem
 
+    .controls
+        display: flex
+        align-items: center
         button
             cursor: pointer
-            font-size: 20px
-            color: #444
             transition: 0.4s linear
 
             &:hover
@@ -30,17 +45,21 @@ $player-primary: #f60
             & + button
                 margin-left: 1rem
 
-    .time, .duration
+    .time
         font-size: 0.8rem
         color: $player-primary
-        padding: 0 0.7rem
+        position: absolute
+        right: 1em
+        top: 1em
 
 .progress-wrapper
     cursor: pointer
-    position: relative
-    flex-basis: 400px
-    height: 100%
-    margin: 1rem 0
+    position: absolute
+    top: 0
+    left: 100px
+    right: 0
+    height: 1em
+    transform: translateY(calc(-100% + 0.5em))
     display: flex
     align-items: center
 
@@ -51,13 +70,13 @@ $player-primary: #f60
     .background
         position: absolute
         width: 100%
-        height: 1px
-        background: #ccc
+        height: 2px
+        background: #ffffff
 
     .bar
         position: absolute
         background: $player-primary
-        height: 1px
+        height: 2px
         transition: width 0.2s linear
 
     .handler
@@ -71,6 +90,7 @@ $player-primary: #f60
         transition: all 0.2s
 
 .volume-control
+    display: none
     position: relative
     padding: 10px 0
     cursor: pointer

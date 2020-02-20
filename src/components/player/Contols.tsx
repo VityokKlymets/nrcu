@@ -1,45 +1,51 @@
-import React from "react";
-
+import React from "react"
+import pauseIcon from "./assets/pause-icon.svg"
+import playIcon from "./assets/play-icon.svg"
+import nextIcon from './assets/right-arrow.svg'
 interface IProps {
-  playing: boolean;
-  onPlayClick();
-  onPauseClick();
-  onNextClick();
-  onPrevClick();
+  playing: boolean
+  onPlayClick()
+  onPauseClick()
+  onNextClick()
+  onPrevClick()
 }
 
-function Contols({
-  playing = false,
-  onPlayClick,
-  onPauseClick,
-  onNextClick,
-  onPrevClick
-}: IProps) {
+function Contols({ playing = false, onPlayClick, onPauseClick, onNextClick, onPrevClick }: IProps) {
   function renderPlayBtn() {
     return (
       <button onClick={onPlayClick}>
-        <i className="fas fa-play" />
+        <img className='player-play-icon' src={playIcon} alt=""/>
       </button>
-    );
+    )
   }
   function renderPauseBtn() {
     return (
       <button onClick={onPauseClick}>
-        <i className="fas fa-pause" />
+         <img className='player-pause-icon' src={pauseIcon} alt=""/>
       </button>
-    );
+    )
+  }
+  function renderNextBtn() {
+    return (
+      <button onClick={onNextClick}>
+         <img className='player-next-icon' src={nextIcon} alt=""/>
+      </button>
+    )
+  }
+  function renderPrevBtn() {
+    return (
+      <button onClick={onPrevClick}>
+         <img className='player-prev-icon' src={nextIcon} alt=""/>
+      </button>
+    )
   }
   return (
     <div className="controls">
-      <button onClick={onPrevClick}>
-        <i className="fas fa-backward" />
-      </button>
+     {renderPrevBtn()}
       {playing ? renderPauseBtn() : renderPlayBtn()}
-      <button onClick={onNextClick}>
-        <i className="fas fa-forward" />
-      </button>
+     {renderNextBtn()}
     </div>
-  );
+  )
 }
 
-export default Contols;
+export default Contols

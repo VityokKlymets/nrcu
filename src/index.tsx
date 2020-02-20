@@ -15,6 +15,8 @@ declare global {
 window.$ = Jquery
 
 const js = () => {
+  window.scrollTo(0,0)
+  $(".top-nav-menu").removeClass("open")
   setupElements()
 }
 
