@@ -1,9 +1,13 @@
-export interface ISong {
-  url: string
+export interface IMediaItem {
+  $element: JQuery<HTMLElement>
+  idx:number
+  title: string,
+  metadata?:string,
+  path: string,
 }
-export interface ISongList {
-  songs?: ISong[]
-}
+
+export type IMediaList = Array<IMediaItem>
+
 export enum PlayerTypes {
   ADD_LIST,
   PLAY,
@@ -11,16 +15,11 @@ export enum PlayerTypes {
   NEXT_SONG,
   PREV_SONG
 }
-export const DEFAULT_LIST_NAME = "default"
+
 interface IPlayAction {
   type: typeof PlayerTypes.PLAY
-  song?: ISong
-  listName: string
-}
-interface IAddListAction {
-  type: typeof PlayerTypes.ADD_LIST
-  list: ISongList
-  name: string
+  list: IMediaList
+  current: IMediaItem
 }
 
 interface IPauseAction {
@@ -40,4 +39,3 @@ export type PlayerActions =
   | IPauseAction
   | INextSongAction
   | IPrevSongAction
-  | IAddListAction

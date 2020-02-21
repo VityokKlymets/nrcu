@@ -1,14 +1,9 @@
-import { PlayerTypes, ISong, ISongList, PlayerActions } from "../types"
+import { PlayerTypes, IMediaItem, IMediaList, PlayerActions } from "../types"
 
-export const addList = (list: ISongList, name: string): PlayerActions => ({
+
+export const play = (current?: IMediaItem, list?: IMediaList): PlayerActions => ({
   list,
-  name,
-  type: PlayerTypes.ADD_LIST
-})
-
-export const play = (song?: ISong, listName?: string): PlayerActions => ({
-  listName,
-  song,
+  current,
   type: PlayerTypes.PLAY
 })
 

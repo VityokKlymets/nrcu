@@ -44,16 +44,16 @@
 .program-item-btn
     background-repeat: no-repeat
     background-size: cover
+    background-image: url('assets/play-btn.png')
     cursor: pointer
     width: 35px
     height: 35px
+    &.playing
+        background-image: url('assets/pause-btn.png')
     @include for-desktop
         width: 60px
         height: 60px
-    &.play
-        background-image: url('assets/play-btn.png')
-    &.pause
-        background-image: url('assets/pause-btn.png')
+    
 
 .program-item+.program-item
     padding-top: 20px

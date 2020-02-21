@@ -3,7 +3,7 @@ import { render } from "react-dom"
 import Jquery from "jquery"
 import App from "./components/App"
 import AsyncPage from "./components/utils/async-page"
-import setupElements from "./setupElements"
+import setup from "./setup"
 
 declare global {
   interface Window {
@@ -14,16 +14,15 @@ declare global {
 
 window.$ = Jquery
 
-const js = () => {
-  window.scrollTo(0,0)
+const runJs = () => {
   $(".top-nav-menu").removeClass("open")
-  setupElements()
+  setup()
 }
 
 const onWindowLoad = () => {
-  js()
+  runJs()
   const async = new AsyncPage("page-root")
-  async.addEventListener("pageloaded", () => js())
+  async.addEventListener("pageloaded", () => runJs())
 }
 
 $(onWindowLoad)

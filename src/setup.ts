@@ -1,35 +1,14 @@
-import $ from 'jquery'
+import $ from "jquery"
 import "slick-carousel"
 import "slick-carousel/slick/slick.css"
 import "./assets/fonts.css"
+import { IMediaList, IMediaItem } from "./components/store/types"
+import store from "./components/store"
+import { play, pause } from "./components/store/actions/playerActions"
+import { IPlayerState } from "./components/store/reducers/playerReducer"
+import { getPlayer } from "./components/store/selectors/playerSelectors"
 
-let audio: HTMLAudioElement = null
-function onRadioClick() {
-  const $icon = $(this).children(".radio-btn-icon")
-  $icon.toggleClass("pause")
-  if ($icon.hasClass("pause")) {
-    if (!audio && window.AUDIO_URL) {
-      audio = new Audio(window.AUDIO_URL)
-    }
-    if (audio) {
-      audio.play()
-    }
-  } else {
-    if (audio) {
-      audio.pause()
-    }
-  }
-}
-
-export default () => {
-  $("#navToggle").on("click", function() {
-    $(this).toggleClass("active")
-    $(".top-nav-menu").toggleClass("open")
-    // this line ▼ prevents content scroll-behind
-    $("body").toggleClass("locked")
-  })
-
-  $(".radio-btn").on("click", onRadioClick)
+const initSliders = () => {
   const mainSliderConfig = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -113,8 +92,16 @@ export default () => {
     const activeIndex = $(".radio-slider-item").index($(".radio-slider-item.active"))
     slick.slickGoTo(activeIndex)
   })
-
   radioSlider.slick(radioSliderConfig)
+}
+
+const initElements = () => {
+  $("#navToggle").on("click", function() {
+    $(this).toggleClass("active")
+    $(".top-nav-menu").toggleClass("open")
+    // this line ▼ prevents content scroll-behind
+    $("body").toggleClass("locked")
+  })
 
   const copyRecentNewsChannelNameForMobileLayout = () => {
     const news = $(".recent-news-item")
@@ -126,4 +113,58 @@ export default () => {
     })
   }
   copyRecentNewsChannelNameForMobileLayout()
+}
+
+const buildList = (items: JQuery<HTMLElement>) => {
+  const result: IMediaList = []
+
+  items.each((idx, item) => {
+    const $item = $(item)
+
+    const title = $item.data("media-title")
+    const path = $item.data("media-path")
+    const metadata = $item.data("media-metadata")
+
+    const mediaItem: IMediaItem = {
+      idx,
+      title,
+      path,
+      metadata,
+      $element: $item
+    }
+
+    result.push(mediaItem)
+  })
+  return result
+}
+
+const initMedia = () => {
+  const mediaContainers = $("*[data-media-container]")
+
+  mediaContainers.each((idx, container) => {
+    const mediaItems = $(container).find("*[data-media-item]")
+    const list = buildList(mediaItems)
+
+    list.forEach(mediaItem => {
+      mediaItem.$element.on("click", () => {
+        const state: IPlayerState = getPlayer(store.getState())
+        if (state.play) {
+          if(state.current.idx === mediaItem.idx){
+            store.dispatch(pause())
+          }
+          else {
+            store.dispatch(play(mediaItem, list))
+          }
+        } else {
+          store.dispatch(play(mediaItem, list))
+        }
+      })
+    })
+  })
+}
+
+export default () => {
+  initSliders()
+  initElements()
+  initMedia()
 }

@@ -1,30 +1,29 @@
-import { PlayerTypes, ISong, PlayerActions, ISongList } from "../types"
+import { PlayerTypes, PlayerActions, IMediaItem, IMediaList } from "../types"
 
 export interface IPlayerState {
-  currentList?: ISongList
-  play: boolean
-  song?: ISong
-  lists: object
+  list: IMediaList
+  current: IMediaItem
+  play: boolean,
+  prevItem: IMediaItem
 }
 const initalState: IPlayerState = {
-  currentList: {
-    songs: []
-  },
-  lists: {},
+  list: [],
   play: false,
-  song: null
+  current: null,
+  prevItem: null
 }
 export default (state = initalState, action: PlayerActions) => {
   switch (action.type) {
     case PlayerTypes.PLAY:
-      if (!action.song) {
+      if (!action.current) {
         return { ...state, play: true }
       }
       return {
         ...state,
-        list: action.listName ? state.lists[action.listName] : state.currentList,
         play: true,
-        song: action.song
+        list: action.list,
+        prevItem: state.current ? state.current : action.current,
+        current: action.current
       }
     case PlayerTypes.PAUSE:
       return {
@@ -32,31 +31,23 @@ export default (state = initalState, action: PlayerActions) => {
         play: false
       }
     case PlayerTypes.NEXT_SONG:
-      const currentIndex = state.currentList.songs.findIndex(el => el.url === state.song.url)
+      const currentIndex = state.list.findIndex(el => el.idx === state.current.idx)
       if (currentIndex < 0) {
         return state
       }
       return {
         ...state,
-        song:
-          state.currentList[
-            currentIndex + 1 < state.currentList.songs.length ? currentIndex + 1 : 0
-          ]
+        current: state.list[currentIndex + 1 < state.list.length ? currentIndex + 1 : 0]
       }
     case PlayerTypes.PREV_SONG:
-      const prevIndex = state.currentList.songs.findIndex(el => el.url === state.song.url)
+      const prevIndex = state.list.findIndex(el => el.idx === state.current.idx)
       if (prevIndex < 0) {
         return state
       }
       return {
         ...state,
-        current: state.currentList[prevIndex - 1 >= 0 ? prevIndex - 1 : 0]
+        current: state.list[prevIndex - 1 >= 0 ? prevIndex - 1 : 0]
       }
-    case PlayerTypes.ADD_LIST:
-      if (action.name in state.lists) {
-        return state
-      }
-      return { ...state, lists: { ...state.lists, [action.name]: action.list } }
     default:
       return state
   }

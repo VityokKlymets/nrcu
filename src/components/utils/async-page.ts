@@ -24,6 +24,11 @@ export default class AsyncPage {
     this.addEventListener("pageloaded", () => {
       this.links = this.init()
     })
+    
+    window.addEventListener("popstate",async (event: PopStateEvent) => {
+      const href = window.location.pathname
+      await this.loadPage(href)
+    })
   }
 
   private init(): ILink[] {
@@ -46,10 +51,11 @@ export default class AsyncPage {
     return result
   }
 
-  private async loadPage(href: string) {
+  private async loadPage(href: string,resetScroll = true) {
     const responce = await axios.get(href)
 
     const contentType: string = responce.headers["content-type"]
+
     if (/text\/html/.test(contentType)) {
       const data: string = responce.data
       const startIndex = data.indexOf("<body>")
@@ -58,6 +64,11 @@ export default class AsyncPage {
       if (!startIndex || !endIndex) {
         throw new Error("Invalid html")
       }
+
+      const title = data.substring(
+        data.indexOf("<title>") + "<title>".length,
+        data.indexOf("</title>")
+      )
 
       const body = data.substring(startIndex + 6, endIndex)
 
@@ -69,7 +80,15 @@ export default class AsyncPage {
       if (!root) throw new Error("root container not found")
 
       this.containerRoot.html($(root).html())
+      
+      window.history.pushState(null, title, href)
+      
+      if(resetScroll){
+        window.scrollTo(0,0)
+      }
+
       this.dispatchEvent("pageloaded")
+      
     } else {
       throw new Error("Invalid responce")
     }

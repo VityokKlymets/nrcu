@@ -57,19 +57,25 @@ function Player() {
     }
   })
   useEffect(() => {
-    if (!playerState.song) {
+    if (!playerState.current) {
       return
     }
+    const { path, $element } = playerState.current
     if (playerState.play) {
-      audio.play(playerState.song.url)
+      audio.play(path)
+      if (playerState.prevItem) {
+        playerState.prevItem.$element.removeClass("playing")
+      }
+      $element.addClass("playing")
     } else {
       audio.pause()
+      $element.removeClass("playing")
     }
-  }, [playerState.play, playerState.song])
+  }, [playerState.play, playerState.current])
 
   return (
     <div className="player-main">
-      <img src="https://api.suspilne.radio/promin.jpg" alt="" className="player-image"/>
+      <img src="https://api.suspilne.radio/promin.jpg" alt="" className="player-image" />
       <Contols
         playing={playerState.play}
         onPauseClick={pauseHandler}
