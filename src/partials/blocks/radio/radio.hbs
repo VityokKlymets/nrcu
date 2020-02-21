@@ -1,8 +1,3 @@
-<div class="container">
-    <div class="d-flex justify-content-end">
-        <div class="radio-status online">В ефірі</div>
-    </div>
-</div>
 
 <div class="radio radio-{{radio}}">
     <div class="container">
@@ -411,4 +406,25 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    
+    <div class="radio-program ">
+        <div class="radio-program-head">
+            <div class="radio-program-logo radio-{{radio}}">
+                Культура
+            </div>
+            <div class="radio-program-title">Радіодетиктив</div>
+        </div>
+        <img class="radio-program-image" src="./assets/program.png" alt="">
+        <div class="radio-program-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam alias, iure perspiciatis magnam nisi ipsum pariatur odit voluptatum dolorum sit?
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="news-category-title">Архів</div>
+    {{> blocks/programs-list/programs-list}}
 </div>

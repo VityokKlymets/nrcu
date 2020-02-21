@@ -161,7 +161,9 @@
     display: inline-block
     padding-right: 1.5em
 .radio-status
-    position: relative
+    position: absolute
+    bottom: 0
+    right: 0
     @include for-phone
         margin-bottom: 20px
     @include for-desktop
@@ -230,8 +232,71 @@
         transform: translateY(-50%) scale(-1)
     
 
-
 .radio-slider
     background: #bbc6d1
     .slider-wrapper
         padding: 0 15%
+
+
+.radio-program
+    display: grid
+    grid-template-columns: 50% 50%
+    grid-template-rows: auto auto
+    grid-column-gap: 20px
+    grid-row-gap: 30px
+    @include for-tablet-only
+        grid-template-columns: 100%
+        grid-template-rows: auto auto auto
+    @include for-phone
+        padding: 20px 0 40px 0
+    @include for-desktop
+        padding: 40px 0 80px 0
+    @include for-large-desktop
+        padding: 70px 0 140px 0
+
+.radio-program-head
+    grid-column: 1/3
+    grid-row: 1/2
+    display: flex
+    align-items: center
+    @include for-tablet-only
+        grid-column: 1/2
+        grid-row: 1/2
+.radio-program-image
+    grid-column: 1/2
+    grid-row: 2/3
+    max-width: 100%
+    height: auto
+    @include for-tablet-only
+        justify-self: center
+        grid-column: 1/2
+        grid-row: 2/3
+.radio-program-description
+    grid-column: 2/3
+    grid-row: 2/3
+    @include for-tablet-only
+        grid-column: 1/2
+        grid-row: 3/4
+
+.radio-program-logo
+    width: 80px
+    height: 80px
+    display: flex
+    justify-content: center
+    align-items: center
+    color: #ffffff
+    background: #651723
+    border-radius: 50%
+    font-size: .7em
+    font-weight: bold
+    text-transform: uppercase
+    &.radio-
+        &3
+            background: #6a249b
+        &2
+            background: #ff9c44
+    
+.radio-program-title
+    padding-left: 2em
+    font-weight: bold
+    font-size: 1.4em

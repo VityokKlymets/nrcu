@@ -1,17 +1,63 @@
 .header
-    display: flex
-    justify-content: space-between
-    align-items: flex-end
-    align-items: center
+    display: grid
+    grid-template-columns: repeat(3,1fr)
+    position: relative
     @include for-phone
-        padding: 20px 0
+        padding: 20px 0 40px 0
     @include for-desktop
-        padding: 40px 0
+        padding: 40px 0 60px 0
     @include for-large-desktop
-        padding: 70px 0
+        padding: 70px 0 90px 0
+    .header-top-items
+        grid-column: 1/2
+        grid-row: 1/2
+        @include for-tablet-only
+            display: none
+
+    .header-logo
+        justify-self: center
+        grid-column: 2/3
+        grid-row: 1/2
+    
+    .header-social
+        justify-self: end
+        grid-column: 3/4
+        grid-row: 1/2
+        display: flex
+        align-items: center
+        @include for-tablet-only
+            display: none
+
+.header-top-items
+    display: flex
+    align-items: center
+
+.header-items-top-title
+    text-transform: uppercase
+    color: #7e7e7e
+    font-weight: bold
+    font-size: 1em
+    margin-right: 2em
+
+.header-top-items-list-item
+    font-size: .9em
+
+
+        
 .top-nav
     position: relative
     z-index: 4
+    width: 100%
+    display: flex
+    justify-content: center
+    background: $magenta
+    @include for-phone
+        margin-bottom: 20px
+    @include for-desktop
+        margin-bottom: 40px
+    @include for-large-desktop
+        margin-bottom: 70px
+    
 .top-nav-burger
     display: none
     position: fixed
@@ -103,7 +149,6 @@
     text-decoration: none
     white-space: nowrap
     margin: 0
-    background-color: $magenta
     color: $white
     text-transform: lowercase
     transition: all .3s linear
@@ -133,24 +178,45 @@
 .logo-image
     display: block
     background: url(assets/logo.svg) no-repeat
-    width: 250px
+    width: 200px
     height: 75px
     background-size: contain
 
-.header.radio-3
-    .top-nav-item
+.top-nav.radio-
+    &3
         background: #6a249b
-        &.active
-            background-color: $grey
-            color: $dark-grey
-    .logo-image
-        background-image: url(assets/culture-logo.png)
-
-.header.radio-2
-    .top-nav-item
+    &2
         background: #ff9c44
-        &.active
-            background-color: $grey
-            color: $dark-grey
-    .logo-image
-        background-image: url(assets/ray-logo.png)
+
+.header.radio-
+    &3
+        .logo-image
+            background-image: url(assets/culture-logo.png)
+    &2
+        .logo-image
+            background-image: url(assets/ray-logo.png)
+
+.header-icon
+    width: 25px
+    height: 25px
+    background-size: contain
+    &.facebook
+        background-image: url(assets/header/facebook.png)
+    &.instagram
+        background-image: url(assets/header/instagram.png)
+    &.apple
+        background-image: url(assets/header/apple.png)
+    &.android
+        background-image: url(assets/header/android.png)
+    &.ukraine
+        background-image: url(assets/header/ukraine.png)
+        width: 40px
+    &.search-icon 
+        background-image: url(assets/header/search.png)
+        height: 25px
+        width: 25px
+
+.header-search 
+    margin-left: 10px
+    .search-input
+        background: #bcbcbc

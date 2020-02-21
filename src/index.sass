@@ -64,16 +64,7 @@ button
     display: none
     @include for-tablet-only
         display: block
-.search-input
-    width: 250px
-    border: 1px solid #999999
-    background: #646363
-    display: block
-    color: $white
-    padding: 15px 10px
-    &::placeholder
-        color: $white
-        outline: none
+
 img.rounded
     border-radius: 50%
 .icon
@@ -82,7 +73,7 @@ img.rounded
     background-repeat: no-repeat
     background-position: top center
 .icon + .icon
-    margin-left: 15px
+    margin-left: 10px
 .ukraine
     width: 51px
     background-image: url(assets/ukraine.svg)
@@ -94,7 +85,9 @@ img.rounded
     background-image: url(assets/facebook.svg)
 .android
     background-image: url(assets/android.svg)
-    
+.search-icon
+    background-image: url(assets/search.png)
+
 .slick-slide,.slick-track,.slick-list
     height: 100%
 .slick-slide
@@ -171,6 +164,25 @@ audio
     width: 100%
 
 
+.search
+    display: flex
+    align-items: center
+.search-input
+    max-width: 140px
+    background: #7e7e7e
+    color: $white
+    line-height: 20px
+    outline: none
+    border: 0
+    padding-left: .5em
+    font-size: 0.8em
+    border: 1px solid #dedede
+    margin-right: .5em
+    &::placeholder
+        color: $white
+        outline: none
+    
+
 @import partials/blocks/header/style
 @import partials/blocks/footer/style
 @import partials/blocks/news/style
@@ -185,3 +197,7 @@ audio
 @import styles/pages/news-detail
 @import styles/pages/speaker
 @import styles/pages/speakers
+
+
+
+    

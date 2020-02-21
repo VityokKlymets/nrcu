@@ -1,9 +1,33 @@
 <div class="container">
     <div class="header radio-{{radio}}">
-        <a href="/" class="logo">
+        <a href="/" class="header-logo logo">
             <div class="logo-image">{{logo}}</div>
         </a>
-        <div class="top-nav">
+        <div class="header-top-items">
+            <div class="header-items-top-title">
+                Топ три
+            </div>
+            <div class="header-top-items-list">
+                <div class="header-top-items-list-item">Lorem, ipsum dolor.</div>
+                <div class="header-top-items-list-item">Lorem, ipsum dolor.</div>
+                <div class="header-top-items-list-item">Lorem, ipsum dolor.</div>
+            </div>
+        </div>
+        <div class="header-social">
+            <a href="" class="icon header-icon instagram"></a>
+            <a href=""  class="icon header-icon facebook"></a>
+            <a href="" class="icon header-icon ukraine"></a>
+            <a href="" class="icon header-icon apple"></a>
+            <a href="" class="icon header-icon android"></a>
+            <form class="header-search search" action="">
+                    <input class="search-input" type="text" placeholder="пошук на КУЛЬТУРІ">
+                     <div class="icon header-icon search-icon"></div>
+            </form>
+        </div>
+        <div class="radio-status online">В ефірі</div>
+    </div>
+</div>
+  <div class="top-nav radio-{{radio}}">
             <nav class="top-nav-menu">
                 <div class="top-nav-item active">
                     <a href="#">політика
@@ -32,5 +56,3 @@
             </nav>
             <div class="top-nav-burger" id="navToggle"></div>
         </div>
-    </div>
-</div>
