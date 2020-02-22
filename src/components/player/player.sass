@@ -1,6 +1,5 @@
 $player-height: 60px
-$player-bg: #fff
-$player-primary: #651723
+$player-primary: #ffff
 
 .player-image
     width: $player-height
@@ -27,11 +26,15 @@ $player-primary: #651723
     display: flex
     align-items: center
     justify-content: center
-    background: $player-bg
     width: 100%
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3)
     z-index: 10
-
+    background: #651723
+    &.radio-
+        &2
+            background: #ff9c44
+        &3
+            background: #6a249b
     .controls
         display: flex
         align-items: center
@@ -137,7 +140,6 @@ $player-primary: #651723
             bottom: -10px
             border: 5px solid #000
             left: 8px
-            border-color: transparent transparent $player-bg $player-bg
             box-shadow: (-3px) 3px 4px rgba(0, 0, 0, 0.1)
 
         &::after
@@ -145,7 +147,6 @@ $player-primary: #651723
             left: 9px
             z-index: 1
             border: 4px solid #000
-            border-color: transparent transparent $player-bg $player-bg
 
     .volume-inner
         position: absolute

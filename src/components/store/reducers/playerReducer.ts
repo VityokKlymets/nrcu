@@ -3,11 +3,13 @@ import { PlayerTypes, PlayerActions, IMediaItem, IMediaList } from "../types"
 export interface IPlayerState {
   list: IMediaList
   current: IMediaItem
-  play: boolean,
+  play: boolean
   prevItem: IMediaItem
+  listID: number
 }
 const initalState: IPlayerState = {
   list: [],
+  listID: null,
   play: false,
   current: null,
   prevItem: null
@@ -23,7 +25,8 @@ export default (state = initalState, action: PlayerActions) => {
         play: true,
         list: action.list,
         prevItem: state.current ? state.current : action.current,
-        current: action.current
+        current: action.current,
+        listID: action.listID
       }
     case PlayerTypes.PAUSE:
       return {
@@ -37,7 +40,8 @@ export default (state = initalState, action: PlayerActions) => {
       }
       return {
         ...state,
-        current: state.list[currentIndex + 1 < state.list.length ? currentIndex + 1 : 0]
+        current: state.list[currentIndex + 1 < state.list.length ? currentIndex + 1 : 0],
+        prevItem: state.current 
       }
     case PlayerTypes.PREV_SONG:
       const prevIndex = state.list.findIndex(el => el.idx === state.current.idx)
@@ -46,7 +50,8 @@ export default (state = initalState, action: PlayerActions) => {
       }
       return {
         ...state,
-        current: state.list[prevIndex - 1 >= 0 ? prevIndex - 1 : 0]
+        current: state.list[prevIndex - 1 >= 0 ? prevIndex - 1 : 0],
+        prevItem: state.current 
       }
     default:
       return state

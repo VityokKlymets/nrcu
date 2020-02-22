@@ -145,18 +145,18 @@ const initMedia = () => {
     const mediaItems = $(container).find("*[data-media-item]")
     const list = buildList(mediaItems)
 
-    list.forEach(mediaItem => {
+    list.forEach((mediaItem,listID) => {
       mediaItem.$element.on("click", () => {
         const state: IPlayerState = getPlayer(store.getState())
         if (state.play) {
-          if(state.current.idx === mediaItem.idx){
+          if(state.current.idx === mediaItem.idx,state.listID === listID){
             store.dispatch(pause())
           }
           else {
-            store.dispatch(play(mediaItem, list))
+            store.dispatch(play(mediaItem, list,listID))
           }
         } else {
-          store.dispatch(play(mediaItem, list))
+          store.dispatch(play(mediaItem, list,listID))
         }
       })
     })

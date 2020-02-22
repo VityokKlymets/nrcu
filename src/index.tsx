@@ -8,7 +8,8 @@ import setup from "./setup"
 declare global {
   interface Window {
     $: typeof Jquery
-    AUDIO_URL: string
+    AUDIO_URL: string,
+    CHANNEL_ID: number
   }
 }
 

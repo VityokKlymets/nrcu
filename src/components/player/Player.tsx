@@ -74,9 +74,10 @@ function Player() {
   }, [playerState.play, playerState.current])
 
   return (
-    <div className="player-main">
+    <div className={`player-main ${window.CHANNEL_ID ? `radio-${window.CHANNEL_ID}` : ""}`}>
       <img src="https://api.suspilne.radio/promin.jpg" alt="" className="player-image" />
       <Contols
+        list={playerState.list}
         playing={playerState.play}
         onPauseClick={pauseHandler}
         onPlayClick={playHander}

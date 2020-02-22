@@ -1,10 +1,11 @@
 import { PlayerTypes, IMediaItem, IMediaList, PlayerActions } from "../types"
 
 
-export const play = (current?: IMediaItem, list?: IMediaList): PlayerActions => ({
+export const play = (current?: IMediaItem, list?: IMediaList,listID?:number): PlayerActions => ({
   list,
   current,
-  type: PlayerTypes.PLAY
+  type: PlayerTypes.PLAY,
+  listID
 })
 
 export const pause = (): PlayerActions => ({

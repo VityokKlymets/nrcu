@@ -1,7 +1,7 @@
 .flex-list
     display: flex
     flex-wrap: wrap
-    font-family: tahoma serif
+    justify-content: center
     @include for-tablet-only
         justify-content: center
         &.prog-list
@@ -12,24 +12,19 @@
         .flex-list-item
             justify-content: flex-start
 .flex-list-item
-    flex-basis: 170px
-    margin: 0 5px
-    margin-bottom: 20px
+    flex-basis: 200px
+    margin: 0 25px
+    margin-bottom: 30px
     display: flex
     flex-direction: column
     justify-content: space-between
     align-items: flex-start
     font-size: 14px
-   
-    @include for-phone
-        width: auto
-        img
-            width: auto
-    @include for-desktop
-        width: 100%
-        img
-            width: 100%
-            object-fit: cover
+    img
+        object-fit: cover
+        border-radius: 20px
+
     span
-        padding-top: 5px
-        color: #0083cf
+        padding-top: 10px
+        font-size: 1.2em
+        color: #470505

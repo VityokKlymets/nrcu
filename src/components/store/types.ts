@@ -20,6 +20,7 @@ interface IPlayAction {
   type: typeof PlayerTypes.PLAY
   list: IMediaList
   current: IMediaItem
+  listID: number
 }
 
 interface IPauseAction {
