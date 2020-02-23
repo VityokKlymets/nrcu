@@ -72,7 +72,7 @@ export default class AsyncPage {
 
       const body = data.substring(startIndex + 6, endIndex)
 
-      const html = $.parseHTML(body)
+      const html = $.parseHTML(body,document,true)
 
       const root = html.find((value: HTMLElement) => {
         return value.id == this.rootId

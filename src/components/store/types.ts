@@ -4,6 +4,8 @@ export interface IMediaItem {
   title: string,
   metadata?:string,
   path: string,
+  description: string,
+  picture: string,
 }
 
 export type IMediaList = Array<IMediaItem>

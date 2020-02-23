@@ -124,12 +124,16 @@ const buildList = (items: JQuery<HTMLElement>) => {
     const title = $item.data("media-title")
     const path = $item.data("media-path")
     const metadata = $item.data("media-metadata")
+    const description =  $item.data("media-description")
+    const picture =  $item.data("media-picture")
 
     const mediaItem: IMediaItem = {
       idx,
       title,
       path,
       metadata,
+      picture,
+      description,
       $element: $item
     }
 

@@ -1,75 +1,37 @@
-import React, { useRef, useState, MouseEvent, RefObject } from "react";
+import React, { useRef, MouseEvent } from "react"
 
 interface IProps {
-  volume: number;
-  onVolumeChange(value: number);
-}
-
-function checkValue(value: number): number {
-  if (value > 0 && value <= 1) {
-    return value;
-  }
-  if (value < 0) {
-    return 0;
-  }
-  if (value > 1) {
-    return 1;
-  }
+  volume: number
+  onVolumeChange(value: number)
 }
 
 function VolumeControl({ volume = 0, onVolumeChange }: IProps) {
-  const [mute, setMute] = useState(false);
-  const [value, setValue] = useState(volume);
-  const targetRef = useRef<HTMLDivElement>(null);
-  const onClickHandler = (e: MouseEvent) => {
+  const targetRef = useRef<HTMLDivElement>(null)
+  const clickHandler = (e: MouseEvent) => {
     if (!targetRef) {
-      return;
+      return
     }
-    const target = targetRef.current;
-    const height = target.clientHeight;
-    const offset = target.offsetTop - window.scrollY;
-    const y = e.clientY - offset;
-    const progress = 1 - y / height;
-    const volumeValue = checkValue(progress);
-
-    if (!mute) {
-      onVolumeChange(volumeValue);
-    }
-    setValue(volumeValue);
-  };
-  const onMuteHandler = () => {
+    const target = targetRef.current
+    const width = target.clientWidth || target.offsetWidth
+    const x = e.pageX - target.offsetLeft
+    let newVolume = x / width
+    newVolume = newVolume > 0 ? newVolume : 0
     if (onVolumeChange) {
-      onVolumeChange(mute ? value : 0);
+      onVolumeChange(newVolume)
     }
-    setMute(muteValue => !muteValue);
-  };
+  }
   return (
-    <div className={`volume-control ${mute ? "muted" : ""}`}>
-      <div onClick={onMuteHandler} className="volume-icon">
-        {mute ? (
-          <i className="fas fa-volume-mute" />
-        ) : (
-          <i className="fas fa-volume-up" />
-        )}
-      </div>
-      <div onClick={onClickHandler} className="volume-wrapper">
-        <div ref={targetRef} className="volume-inner">
-          <div className="volume-background" />
-          <div
-            className="volume-progress"
-            style={{
-              height: `${value * 100}%`
-            }}
-          />
-          <div
-            className="slider-handler"
-            style={{
-              bottom: `${value * 100}%`
-            }}
-          />
+    <div ref={targetRef} className={`volume-control`}>
+      <div onClick={clickHandler} className="volume-wrapper">
+        <div
+          className="volume-inner"  
+          style={{
+            width: `${volume * 100}%`
+          }}
+        >
         </div>
       </div>
     </div>
-  );
+  )
 }
-export default VolumeControl;
+export default VolumeControl

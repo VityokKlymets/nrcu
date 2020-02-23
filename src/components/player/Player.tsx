@@ -72,10 +72,21 @@ function Player() {
       $element.removeClass("playing")
     }
   }, [playerState.play, playerState.current])
-
+  const {current} = playerState
   return (
-    <div className={`player-main ${window.CHANNEL_ID ? `radio-${window.CHANNEL_ID}` : ""}`}>
-      <img src="https://api.suspilne.radio/promin.jpg" alt="" className="player-image" />
+    <div className={`player-main ${window.CHANNEL_ID ? `radio-${window.CHANNEL_ID}` : ""} ${current && 'visible'}`}>
+      {current && <img src={current.picture} alt="" className="player-image" /> }
+      {current && (
+        <div className="player-info">
+        <div className="player-info-title">
+          {current.title}
+        </div>
+        <div className="player-info-description">
+          {current.description}
+        </div>
+      </div>
+      )}
+      
       <Contols
         list={playerState.list}
         playing={playerState.play}
