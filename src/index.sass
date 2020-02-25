@@ -182,6 +182,20 @@ audio
         color: $white
         outline: none
     
+#preloader
+    position: fixed
+    transition: all .3s ease
+    background: #ffffff
+    opacity: 0
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    z-index: 10
+    pointer-events: none
+
+#preloader.active
+    opacity: .4
 
 @import partials/blocks/header/style
 @import partials/blocks/footer/style

@@ -5,7 +5,7 @@ interface ILink {
   element: HTMLAnchorElement
   href: string
 }
-type Events = "pageloaded"
+type Events = "pageloaded" | "pageloading"
 
 export default class AsyncPage {
   private links: ILink[]
@@ -17,9 +17,13 @@ export default class AsyncPage {
     this.rootId = rootId
     this.containerRoot = $(`#${rootId}`)
 
-    const event = document.createEvent("Event")
-    const type: Events = "pageloaded"
-    event.initEvent(type, true, true)
+    const pageloaded = document.createEvent("Event")
+    const pageloadedType: Events = "pageloaded"
+    pageloaded.initEvent(pageloadedType, true, true)
+
+    const pageloading = document.createEvent("Event")
+    const pageloadingType: Events = "pageloading"
+    pageloading.initEvent(pageloadingType, true, true)
 
     this.addEventListener("pageloaded", () => {
       this.links = this.init()
@@ -52,6 +56,8 @@ export default class AsyncPage {
   }
 
   private async loadPage(href: string,resetScroll = true) {
+    this.dispatchEvent('pageloading')
+    
     const responce = await axios.get(href)
 
     const contentType: string = responce.headers["content-type"]

@@ -18,6 +18,7 @@ function Player() {
   const dispatch = useDispatch()
   const [currentTime, setCurrentTime] = useState(initialTime)
   const [duration, setDuration] = useState(initialTime)
+  const [channelID, setChannelID] = useState(window.CHANNEL_ID || 1)
   const loadHandler = () => {
     setDuration(audio.getDuration())
   }
@@ -46,6 +47,13 @@ function Player() {
   const prevHandler = () => {
     dispatch(prevSong())
   }
+
+  useEffect(() => {
+    window.async.addEventListener("pageloaded", () => {
+      setChannelID(window.CHANNEL_ID || 1)
+    })
+  }, [])
+
   useEffect(() => {
     audio.addEvent("loadedmetadata", loadHandler)
     audio.addEvent("ended", endedHandler)
@@ -56,6 +64,7 @@ function Player() {
       audio.removeEvent("timeupdate", timeUpdateHandler)
     }
   })
+
   useEffect(() => {
     if (!playerState.current) {
       return
@@ -72,21 +81,19 @@ function Player() {
       $element.removeClass("playing")
     }
   }, [playerState.play, playerState.current])
-  const {current} = playerState
+
+  const { current } = playerState
+
   return (
-    <div className={`player-main ${window.CHANNEL_ID ? `radio-${window.CHANNEL_ID}` : ""} ${current && 'visible'}`}>
-      {current && <img src={current.picture} alt="" className="player-image" /> }
+    <div className={`player-main radio-${channelID} ${current && "visible"}`}>
+      {current && <img src={current.picture} alt="" className="player-image" />}
       {current && (
         <div className="player-info">
-        <div className="player-info-title">
-          {current.title}
+          <div className="player-info-title">{current.title}</div>
+          <div className="player-info-description">{current.description}</div>
         </div>
-        <div className="player-info-description">
-          {current.description}
-        </div>
-      </div>
       )}
-      
+
       <Contols
         list={playerState.list}
         playing={playerState.play}
@@ -95,12 +102,15 @@ function Player() {
         onNextClick={nextHandler}
         onPrevClick={prevHandler}
       />
-      <Progress
-        time={currentTime}
-        duration={duration}
-        progress={progress}
-        onProgress={progressHandler}
-      />
+      {isFinite(+duration) && (
+        <Progress
+          time={currentTime}
+          duration={duration}
+          progress={progress}
+          onProgress={progressHandler}
+        />
+      )}
+
       <VolumeControl volume={audio.getVolume()} onVolumeChange={volumeChangeHandler} />
     </div>
   )
