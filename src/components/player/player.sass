@@ -7,6 +7,7 @@ $player-primary: #ffff
     position: absolute
     left: 0
     top: 0
+
 .player-play-icon,.player-pause-icon
     width: 40px
     height: 40px
@@ -15,6 +16,14 @@ $player-primary: #ffff
     width: 20px
     height: 20px
 
+.player-volume-icon
+    width: 20px
+    height: 20px
+    position: absolute
+    left: -30px
+    top: 50%
+    transform: translateY(-50%)
+    
 .player-prev-icon
     transform: scale(-1)
 
@@ -113,7 +122,9 @@ $player-primary: #ffff
     padding: 10px 0
     flex-basis: 130px
     cursor: pointer
-    display: none
+    margin-left: 4em
+    @media (max-width: 1024px)
+        display: none
     .volume-wrapper
         display: flex
         justify-content: center
@@ -123,7 +134,7 @@ $player-primary: #ffff
         width: 100%
         z-index: 1
         overflow: hidden
-        background-color: #fff
+        background-color: #662d2d69
         cursor: pointer
 
     .volume-inner
@@ -131,7 +142,7 @@ $player-primary: #ffff
         left: 0
         top: 0
         height: 100%
-        background: #651723
+        background: #aa1d1dad
 
         .volume-background, .volume-progress
             position: absolute

@@ -18,6 +18,7 @@ function Player() {
   const dispatch = useDispatch()
   const [currentTime, setCurrentTime] = useState(initialTime)
   const [duration, setDuration] = useState(initialTime)
+  const [volume,setVolume] = useState(audio.getVolume())
   const [channelID, setChannelID] = useState(window.CHANNEL_ID || 1)
   const loadHandler = () => {
     setDuration(audio.getDuration())
@@ -39,6 +40,7 @@ function Player() {
     audio.setTime(time)
   }
   const volumeChangeHandler = value => {
+    setVolume(value)
     audio.setVolume(value)
   }
   const nextHandler = () => {
@@ -111,7 +113,7 @@ function Player() {
         />
       )}
 
-      <VolumeControl volume={audio.getVolume()} onVolumeChange={volumeChangeHandler} />
+      <VolumeControl volume={volume} onVolumeChange={volumeChangeHandler} />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useRef, MouseEvent } from "react"
+import volumeIcon from './assets/speaker.svg'
 
 interface IProps {
   volume: number
@@ -8,9 +9,6 @@ interface IProps {
 function VolumeControl({ volume = 0, onVolumeChange }: IProps) {
   const targetRef = useRef<HTMLDivElement>(null)
   const clickHandler = (e: MouseEvent) => {
-    if (!targetRef) {
-      return
-    }
     const target = targetRef.current
     const width = target.clientWidth || target.offsetWidth
     const x = e.pageX - target.offsetLeft
@@ -20,9 +18,11 @@ function VolumeControl({ volume = 0, onVolumeChange }: IProps) {
       onVolumeChange(newVolume)
     }
   }
+  
   return (
-    <div ref={targetRef} className={`volume-control`}>
-      <div onClick={clickHandler} className="volume-wrapper">
+    <div ref={targetRef} onClick={clickHandler} className='volume-control'>
+       <img className="player-volume-icon" src={volumeIcon} alt="" />
+      <div  className="volume-wrapper">
         <div
           className="volume-inner"  
           style={{

@@ -23,7 +23,7 @@ export default class AsyncPage {
     this.init()
     this.rootId = rootId
     this.containerRoot = $(`#${rootId}`)
-
+    window.location.hash = '#'
     const pageloaded = document.createEvent("Event")
     const pageloadedType: Events = "pageloaded"
     pageloaded.initEvent(pageloadedType, true, true)
@@ -37,7 +37,7 @@ export default class AsyncPage {
     })
     window.addEventListener("hashchange", () => {
       const hash = window.location.hash
-      this.loadPage(this.links[hash].href)
+      this.loadPage(window.location.hash.slice(1))
     })
   }
 
@@ -98,6 +98,9 @@ export default class AsyncPage {
 
     const data: string = responce.data
     const { root, title } = this.parsePage(data)
+
+    document.title = title ? title : document.title
+ 
     if (!root) {
       throw new Error("root container not found")
     }
