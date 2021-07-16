@@ -2,12 +2,12 @@ import $ from "jquery"
 import "slick-carousel"
 import "slick-carousel/slick/slick.css"
 import "./assets/fonts.css"
+import './custom.css'
 import { IMediaList, IMediaItem } from "./components/store/types"
 import store from "./components/store"
 import { play, pause } from "./components/store/actions/playerActions"
 import { IPlayerState } from "./components/store/reducers/playerReducer"
 import { getPlayer } from "./components/store/selectors/playerSelectors"
-
 const initSliders = () => {
   const mainSliderConfig = {
     slidesToShow: 1,
