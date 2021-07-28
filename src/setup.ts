@@ -95,10 +95,11 @@ const initSliders = () => {
     slick.slickGoTo(activeIndex);
 
     $("#radioSlider .radio-slider-item").on("click", function () {
+      const $this = $(this);
+      if (!$this.attr("data-media-path")) return;
       $("#radioSlider .radio-slider-item.active").removeClass("active");
-      $(this).addClass("active");
+      $this.addClass("active");
     });
-    
   });
   radioSlider.slick(radioSliderConfig);
 };
@@ -160,6 +161,7 @@ const initMedia = () => {
     list.forEach((mediaItem, listID) => {
       mediaItem.$element.on("click", (event) => {
         event.preventDefault();
+        if (!mediaItem.path) return;
         const state: IPlayerState = getPlayer(store.getState());
         if (state.play) {
           if ((state.current.idx === mediaItem.idx, state.listID === listID)) {
