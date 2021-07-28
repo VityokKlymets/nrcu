@@ -1,13 +1,14 @@
-import $ from "jquery"
-import "slick-carousel"
-import "slick-carousel/slick/slick.css"
-import "./assets/fonts.css"
-import './custom.css'
-import { IMediaList, IMediaItem } from "./components/store/types"
-import store from "./components/store"
-import { play, pause } from "./components/store/actions/playerActions"
-import { IPlayerState } from "./components/store/reducers/playerReducer"
-import { getPlayer } from "./components/store/selectors/playerSelectors"
+import $ from "jquery";
+import "slick-carousel";
+import "slick-carousel/slick/slick.css";
+import "./assets/fonts.css";
+import "./custom.css";
+import { IMediaList, IMediaItem } from "./components/store/types";
+import store from "./components/store";
+import { play, pause } from "./components/store/actions/playerActions";
+import { IPlayerState } from "./components/store/reducers/playerReducer";
+import { getPlayer } from "./components/store/selectors/playerSelectors";
+
 const initSliders = () => {
   const mainSliderConfig = {
     slidesToShow: 1,
@@ -15,8 +16,8 @@ const initSliders = () => {
     dots: true,
     autoplay: true,
     appendArrows: ".slider .slide-arrows",
-    appendDots: ".slider .slide-dots"
-  }
+    appendDots: ".slider .slide-dots",
+  };
 
   const speakersSliderConfig = {
     slidesToShow: 5,
@@ -29,42 +30,41 @@ const initSliders = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4
-        }
+          slidesToShow: 4,
+        },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 3
-        }
+          slidesToShow: 3,
+        },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2
-        }
+          slidesToShow: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2
-        }
-      }
-    ]
-  }
+          slidesToShow: 2,
+        },
+      },
+    ],
+  };
   const channelsSliderConfig = {
     ...speakersSliderConfig,
     slidesToShow: 6,
     appendArrows: "#channelsSlider .slide-arrows",
-    slidesToScroll: 1
-  }
+    slidesToScroll: 1,
+  };
 
-  $("#channelsSlider").slick(channelsSliderConfig)
-  $("#speakersSlider").slick(speakersSliderConfig)
-  $("#mainSlider").slick(mainSliderConfig)
+  $("#channelsSlider").slick(channelsSliderConfig);
+  $("#speakersSlider").slick(speakersSliderConfig);
+  $("#mainSlider").slick(mainSliderConfig);
 
-  const radioSlider = $("#radioSlider")
-
+  const radioSlider = $("#radioSlider");
   const radioSliderConfig = {
     ...speakersSliderConfig,
     slidesToShow: 5,
@@ -75,57 +75,65 @@ const initSliders = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4
-        }
+          slidesToScroll: 4,
+        },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      }
-    ]
-  }
+          slidesToScroll: 2,
+        },
+      },
+    ],
+  };
 
-  radioSlider.on("init", function(e, slick) {
-    const activeIndex = $(".radio-slider-item").index($(".radio-slider-item.active"))
-    slick.slickGoTo(activeIndex)
-  })
-  radioSlider.slick(radioSliderConfig)
-}
+  radioSlider.on("init", function (e, slick) {
+    const activeIndex = $(".radio-slider-item").index(
+      $(".radio-slider-item.active")
+    );
+    slick.slickGoTo(activeIndex);
+
+    $("#radioSlider .radio-slider-item").on("click", function () {
+      $("#radioSlider .radio-slider-item.active").removeClass("active");
+      $(this).addClass("active");
+    });
+    
+  });
+  radioSlider.slick(radioSliderConfig);
+};
 
 const initElements = () => {
-  $("#navToggle").on("click", function() {
-    $(this).toggleClass("active")
-    $(".top-nav-menu").toggleClass("open")
+  $("#navToggle").on("click", function () {
+    $(this).toggleClass("active");
+    $(".top-nav-menu").toggleClass("open");
     // this line ▼ prevents content scroll-behind
-    $("body").toggleClass("locked")
-  })
+    $("body").toggleClass("locked");
+  });
 
   const copyRecentNewsChannelNameForMobileLayout = () => {
-    const news = $(".recent-news-item")
+    const news = $(".recent-news-item");
     news.each((idx, el) => {
-      const parent = $(el)
-      const channelName = parent.find(".recent-news-channel-title").clone()
-      const dateContainer = parent.find(".news-date")
-      dateContainer.prepend(channelName)
-    })
-  }
-  copyRecentNewsChannelNameForMobileLayout()
-}
+      const parent = $(el);
+      const channelName = parent.find(".recent-news-channel-title").clone();
+      const dateContainer = parent.find(".news-date");
+      dateContainer.prepend(channelName);
+    });
+  };
+  copyRecentNewsChannelNameForMobileLayout();
+};
 
 const buildList = (items: JQuery<HTMLElement>) => {
-  const result: IMediaList = []
+  const result: IMediaList = [];
 
   items.each((idx, item) => {
-    const $item = $(item)
+    const $item = $(item);
 
-    const title = $item.data("media-title")
-    const path = $item.data("media-path")
-    const metadata = $item.data("media-metadata")
-    const description =  $item.data("media-description")
-    const picture =  $item.data("media-picture")
+    const title = $item.data("media-title");
+    const path = $item.data("media-path");
+    const metadata = $item.data("media-metadata");
+    const description = $item.data("media-description");
+    const picture = $item.data("media-picture");
 
     const mediaItem: IMediaItem = {
       idx,
@@ -134,41 +142,41 @@ const buildList = (items: JQuery<HTMLElement>) => {
       metadata,
       picture,
       description,
-      $element: $item
-    }
+      $element: $item,
+    };
 
-    result.push(mediaItem)
-  })
-  return result
-}
+    result.push(mediaItem);
+  });
+  return result;
+};
 
 const initMedia = () => {
-  const mediaContainers = $("*[data-media-container]")
+  const mediaContainers = $("*[data-media-container]");
 
   mediaContainers.each((idx, container) => {
-    const mediaItems = $(container).find("*[data-media-item]")
-    const list = buildList(mediaItems)
+    const mediaItems = $(container).find("*[data-media-item]");
+    const list = buildList(mediaItems);
 
-    list.forEach((mediaItem,listID) => {
-      mediaItem.$element.on("click", () => {
-        const state: IPlayerState = getPlayer(store.getState())
+    list.forEach((mediaItem, listID) => {
+      mediaItem.$element.on("click", (event) => {
+        event.preventDefault();
+        const state: IPlayerState = getPlayer(store.getState());
         if (state.play) {
-          if(state.current.idx === mediaItem.idx,state.listID === listID){
-            store.dispatch(pause())
-          }
-          else {
-            store.dispatch(play(mediaItem, list,listID))
+          if ((state.current.idx === mediaItem.idx, state.listID === listID)) {
+            store.dispatch(pause());
+          } else {
+            store.dispatch(play(mediaItem, list, listID));
           }
         } else {
-          store.dispatch(play(mediaItem, list,listID))
+          store.dispatch(play(mediaItem, list, listID));
         }
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
 
 export default () => {
-  initSliders()
-  initElements()
-  initMedia()
-}
+  initSliders();
+  initElements();
+  initMedia();
+};
