@@ -21,37 +21,11 @@ const initSliders = () => {
 
   const speakersSliderConfig = {
     slidesToShow: 5,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     dots: false,
     infinite: false,
 
-    appendArrows: ".speakers .slide-arrows",
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-    ],
+    appendArrows: ".speakers .slide-arrows"
   };
   const channelsSliderConfig = {
     ...speakersSliderConfig,
