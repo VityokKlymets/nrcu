@@ -137,11 +137,15 @@ const initMedia = () => {
         event.preventDefault();
         if (!mediaItem.path) return;
         const state: IPlayerState = getPlayer(store.getState());
+
         if (state.play) {
           if ((state.current.idx === mediaItem.idx, state.listID === listID)) {
             store.dispatch(pause());
           } else {
             store.dispatch(play(mediaItem, list, listID));
+            $('.radio-title').html($('.radio-item-title').html())
+            $('.radio-time').html($('.radio-item-time').html())
+
           }
         } else {
           store.dispatch(play(mediaItem, list, listID));
